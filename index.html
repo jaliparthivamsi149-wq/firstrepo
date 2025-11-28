@@ -1,1 +1,584 @@
-<!DOCTYPE html> <html> <head> <title>First repository</title> </head> <body> <h1>Business Intelligence test</h1> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareCare - Connecting Donors with People in Need</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #667eea;
+        }
+
+        .how-it-works {
+            background: #f8f9fa;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:nth-child(2) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .category-card:nth-child(3) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .category-card:nth-child(4) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .impact {
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 2rem;
+            text-align: center;
+        }
+
+        .close-modal {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ShareCare</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#donate">Donate Items</a></li>
+                <li><a href="#request">Request Items</a></li>
+                <li><a href="#impact">Our Impact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Connect. Share. Care.</h1>
+        <p>Bridging the gap between generosity and need, one item at a time</p>
+        <div class="cta-buttons">
+            <a href="#donate" class="btn btn-primary">Donate Items</a>
+            <a href="#request" class="btn btn-secondary">Request Items</a>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>List Your Items</h3>
+                <p>Have unused items? Fill out our simple form to list what you'd like to donate.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>We Connect</h3>
+                <p>Our team matches your donations with people in your community who need them.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Arrange Transfer</h3>
+                <p>We coordinate the pickup or delivery to make the process easy for everyone.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Make an Impact</h3>
+                <p>Your generosity directly helps someone in need while reducing waste.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories">
+        <h2>What Can You Donate?</h2>
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-icon">👕</div>
+                <h3>Clothing</h3>
+                <p>Shirts, pants, shoes, coats</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🪑</div>
+                <h3>Furniture</h3>
+                <p>Tables, chairs, beds, sofas</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3>Books & Toys</h3>
+                <p>Educational materials, games</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🍳</div>
+                <h3>Household</h3>
+                <p>Kitchenware, appliances, decor</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="donate">
+        <h2>Donate Items</h2>
+        <form id="donateForm">
+            <div class="form-group">
+                <label for="donor-name">Your Name *</label>
+                <input type="text" id="donor-name" required>
+            </div>
+            <div class="form-group">
+                <label for="donor-email">Email *</label>
+                <input type="email" id="donor-email" required>
+            </div>
+            <div class="form-group">
+                <label for="donor-phone">Phone Number *</label>
+                <input type="tel" id="donor-phone" required>
+            </div>
+            <div class="form-group">
+                <label for="item-category">Item Category *</label>
+                <select id="item-category" required>
+                    <option value="">Select a category</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="books">Books & Toys</option>
+                    <option value="household">Household Items</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="item-description">Item Description *</label>
+                <textarea id="item-description" required placeholder="Please describe the items you'd like to donate, including condition and quantity"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="donor-location">Your Location (City) *</label>
+                <input type="text" id="donor-location" required>
+            </div>
+            <button type="submit" class="submit-btn">Submit Donation</button>
+        </form>
+    </section>
+
+    <section id="request">
+        <h2>Request Items</h2>
+        <form id="requestForm">
+            <div class="form-group">
+                <label for="requester-name">Your Name *</label>
+                <input type="text" id="requester-name" required>
+            </div>
+            <div class="form-group">
+                <label for="requester-email">Email *</label>
+                <input type="email" id="requester-email" required>
+            </div>
+            <div class="form-group">
+                <label for="requester-phone">Phone Number *</label>
+                <input type="tel" id="requester-phone" required>
+            </div>
+            <div class="form-group">
+                <label for="request-category">What do you need? *</label>
+                <select id="request-category" required>
+                    <option value="">Select a category</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="books">Books & Toys</option>
+                    <option value="household">Household Items</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="request-description">Details *</label>
+                <textarea id="request-description" required placeholder="Please describe what you need and why it would help you"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="requester-location">Your Location (City) *</label>
+                <input type="text" id="requester-location" required>
+            </div>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </form>
+    </section>
+
+    <section class="impact" id="impact">
+        <h2>Our Impact</h2>
+        <p>Together, we're making a difference in our community</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">1,247</div>
+                <div class="stat-label">Items Donated</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">523</div>
+                <div class="stat-label">Families Helped</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">89</div>
+                <div class="stat-label">Active Donors</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ShareCare. A community initiative to connect generosity with need.</p>
+        <p>Questions? Contact us at <a href="mailto:info@sharecare.org">info@sharecare.org</a></p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            💡 No server needed! Host this for free on GitHub Pages, Netlify, or Vercel
+        </p>
+    </footer>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h2>Thank You! 🎉</h2>
+            <p id="modalMessage"></p>
+            <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const donateForm = document.getElementById('donateForm');
+        const requestForm = document.getElementById('requestForm');
+        const modal = document.getElementById('successModal');
+        const modalMessage = document.getElementById('modalMessage');
+
+        donateForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            modalMessage.textContent = 'Your donation has been submitted! We\'ll contact you soon to arrange the transfer.';
+            modal.style.display = 'flex';
+            donateForm.reset();
+        });
+
+        requestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            modalMessage.textContent = 'Your request has been received! We\'ll search for matching donations and get back to you.';
+            modal.style.display = 'flex';
+            requestForm.reset();
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
